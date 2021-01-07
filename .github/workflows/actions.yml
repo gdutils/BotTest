@@ -57,8 +57,5 @@ jobs:
       run: |
         cd ${GITHUB_WORKSPACE}/gd-utils
         sudo npm install --unsafe-perm=true --allow-root
-        apikey=${{ secrets.TG_TOKEN }}
-        echo "$apikey"
-        export apikey
-        sudo pm2-runtime start server.js & sudo python3 ngrok.py
+        sudo pm2-runtime start server.js & sudo python3 ngrok.py ${{ secrets.TG_TOKEN }}
 
