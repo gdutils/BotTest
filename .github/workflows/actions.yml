@@ -8,7 +8,7 @@ on:
     inputs:
 
 jobs:
-  test2:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -55,5 +55,14 @@ jobs:
       run: |
         cd ${GITHUB_WORKSPACE}/gd-utils
         sudo npm install --unsafe-perm=true --allow-root
-        sudo pm2-runtime start server.js & sudo npx localtunnel --port 8080 --subdomain ${{ secrets.SUBDOMAIN }} & curl "https://${{ secrets.SUBDOMAIN }}.loca.lt/api/gdurl/count?fid=124pjM5LggSuwI1n40bcD5tQ13wS0M6wg" & curl -F "url=https://${{ secrets.SUBDOMAIN }}.loca.lt/api/gdurl/tgbot" 'https://api.telegram.org/bot${{ secrets.TG_TOKEN }}/setWebhook'
+        sudo pm2-runtime start server.js & sudo npx localtunnel --port 8080 --subdomain ${{ secrets.SUBDOMAIN }}
 
+  webrequest:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: webrequests
+      run: |
+        curl "https://${{ secrets.SUBDOMAIN }}.loca.lt/api/gdurl/count?fid=124pjM5LggSuwI1n40bcD5tQ13wS0M6wg"
+        curl -F "url=https://${{ secrets.SUBDOMAIN }}.loca.lt/api/gdurl/tgbot" 'https://api.telegram.org/bot${{ secrets.TG_TOKEN }}/setWebhook'
