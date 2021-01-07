@@ -21,6 +21,7 @@ jobs:
         sudo apt-get -y install zip unzip
         sudo apt-get install nodejs
         sudo npm i -g pm2
+        sudo pip3 install pyngrok
 
     - name: Download Accounts File
       run: |
@@ -57,6 +58,5 @@ jobs:
         sudo npm install --unsafe-perm=true --allow-root
         apikey=${{ secrets.TG_TOKEN }}
         export apikey
-        python3 pip install pyngrok
         sudo pm2-runtime start server.js & sudo python3 ngrok.py
 
