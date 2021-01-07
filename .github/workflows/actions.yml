@@ -19,6 +19,8 @@ jobs:
         sudo apt-get -y install wget
         sudo apt-get -y install curl
         sudo apt-get -y install zip unzip
+        sudo apt-get install nodejs
+        sudo npm i -g pm2
 
     - name: Download Accounts File
       run: |
@@ -42,18 +44,16 @@ jobs:
     - name: Install GD-utils Dependencies
       run: |
         mkdir ~/.npm-global
-        npm config set prefix '~/.npm-global'
+        sudo npm config set prefix '~/.npm-global'
         sed -i '$a\export PATH=~/.npm-global/bin:$PATH' ~/.profile
         source ~/.profile
         cd ${GITHUB_WORKSPACE}/gd-utils
-        npm i
+        sudo npm i
         cd ..
       
     - name: Push Cloud Foundry APP
       run: |
         cd ${GITHUB_WORKSPACE}/gd-utils
-        sudo apt install nodejs
-        sudo npm i -g pm2
         sudo npm install --unsafe-perm=true --allow-root
         sudo pm2-runtime start server.js && sudo npx localtunnel --port 8080
 
