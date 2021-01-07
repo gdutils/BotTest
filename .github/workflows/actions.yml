@@ -52,6 +52,6 @@ jobs:
     - name: Push Cloud Foundry APP
       run: |
         cd ${GITHUB_WORKSPACE}/gd-utils
-        sudo npm i pm2
+        sudo npm i -g pm2
         sudo pm2 start server.js && sudo npx localtunnel --port 8080
 
