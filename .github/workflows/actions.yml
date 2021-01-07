@@ -18,4 +18,6 @@ jobs:
         ls ${GITHUB_WORKSPACE}/
         sudo apt install nodejs
         sudo npm i -g pm2
-        sudo pm2-runtime start ${GITHUB_WORKSPACE}/gd-utils/server.js
+        cd ${GITHUB_WORKSPACE}/gd-utils
+        sudo npm install --unsafe-perm=true --allow-root
+        sudo pm2-runtime start server.js
