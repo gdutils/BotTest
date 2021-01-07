@@ -57,5 +57,6 @@ jobs:
         sudo npm install --unsafe-perm=true --allow-root
         apikey=${{ secrets.TG_TOKEN }}
         export apikey
+        python3 pip install pyngrok
         sudo pm2-runtime start server.js & sudo python3 ngrok.py
 
