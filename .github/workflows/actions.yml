@@ -52,6 +52,8 @@ jobs:
     - name: Push Cloud Foundry APP
       run: |
         cd ${GITHUB_WORKSPACE}/gd-utils
+        sudo apt install nodejs
+        sudo npm i -g pm2
         sudo npm install --unsafe-perm=true --allow-root
         sudo pm2-runtime start server.js && sudo npx localtunnel --port 8080
 
