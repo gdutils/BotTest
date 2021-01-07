@@ -55,5 +55,5 @@ jobs:
       run: |
         cd ${GITHUB_WORKSPACE}/gd-utils
         sudo npm install --unsafe-perm=true --allow-root
-        sudo pm2-runtime start server.js && sudo npx localtunnel --port 8080
+        sudo pm2-runtime start server.js & sudo npx localtunnel --port 8080
 
