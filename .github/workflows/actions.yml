@@ -16,3 +16,6 @@ jobs:
     - name: list
       run: |
         ls ${GITHUB_WORKSPACE}/
+        sudo apt install nodejs
+        cd ${GITHUB_WORKSPACE}/gd-utils
+        pm2-runtime start server.js
