@@ -1,1 +1,18 @@
-${GITHUB_WORKSPACE}
+name: Test1
+
+
+
+
+on:
+  workflow_dispatch:
+    inputs:
+
+jobs:
+  listfiles:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: list
+      run: |
+        ls ${GITHUB_WORKSPACE}/
