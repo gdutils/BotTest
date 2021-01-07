@@ -19,4 +19,4 @@ jobs:
         sudo apt install nodejs
         sudo npm i -g pm2
         cd ${GITHUB_WORKSPACE}/gd-utils
-        sudo pm2 start server.js
+        sudo pm2-runtime start server.js
