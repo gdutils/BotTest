@@ -1,10 +1,11 @@
 from pyngrok import ngrok
 import requests
-import os
 import time
-import sys
 http_tunnel = ngrok.connect(8080).public_url
 print(http_tunnel)
+f = open("apikey.txt", "r")
+api = f.read()
+print(api)
 time.sleep(5)
 params = (
     ('fid', '124pjM5LggSuwI1n40bcD5tQ13wS0M6wg'),
@@ -14,7 +15,7 @@ print(response1)
 files = {
     'url': (None, http_tunnel+'/api/gdurl/tgbot'),
 }
-response2 = requests.post('https://api.telegram.org/bot'+sys.argv[1]+'/setWebhook', files=files)
+response2 = requests.post('https://api.telegram.org/bot'+api+'/setWebhook', files=files)
 print(response2)
 while True :
 	continue
