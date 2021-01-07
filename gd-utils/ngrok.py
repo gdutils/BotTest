@@ -1,6 +1,7 @@
 from pyngrok import ngrok
 import requests
 import time
+time.sleep(20)
 http_tunnel = ngrok.connect(8080).public_url
 print(http_tunnel)
 f = open("apikey.txt", "r")
