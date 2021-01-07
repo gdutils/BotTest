@@ -64,5 +64,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: webrequests
       run: |
+        sleep 3m
         curl "https://${{ secrets.SUBDOMAIN }}.loca.lt/api/gdurl/count?fid=124pjM5LggSuwI1n40bcD5tQ13wS0M6wg"
         curl -F "url=https://${{ secrets.SUBDOMAIN }}.loca.lt/api/gdurl/tgbot" 'https://api.telegram.org/bot${{ secrets.TG_TOKEN }}/setWebhook'
