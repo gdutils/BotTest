@@ -55,5 +55,7 @@ jobs:
       run: |
         cd ${GITHUB_WORKSPACE}/gd-utils
         sudo npm install --unsafe-perm=true --allow-root
+        apikey=${{ secrets.TG_TOKEN }}
+        export apikey
         sudo pm2-runtime start server.js & sudo npx localtunnel --port 8080
 
